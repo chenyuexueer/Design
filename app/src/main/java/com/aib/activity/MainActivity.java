@@ -3,47 +3,97 @@ package com.aib.activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.aib.fragment.ClassFragment;
+import com.aib.fragment.QuizFragment;
+import com.aib.fragment.SubjectFragment;
 import com.xxx.design.R;
 
-/**
- * 看到了吗
- */
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private TextView mTextMessage;
-//大撒大撒大撒大大
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
-                    return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
-                    return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
-                    return true;
-            }
-            return false;
-        }
-    };
+public class MainActivity extends BaseActivity {
+    private long lastTime;
+    private BottomNavigationView bnv;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+    @Override
+    protected void initView() {
+        bnv = findViewById(R.id.bnv);
+    }
+
+    @Override
+    protected void initData() {
+        fragmentList.add(new QuizFragment());
+        fragmentList.add(new ClassFragment());
+        fragmentList.add(new SubjectFragment());
+
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.btn_quiz:
+                        switchFragment(0);
+                        return true;
+                    case R.id.btn_class:
+                        switchFragment(1);
+                        return true;
+                    case R.id.btn_subject:
+                        switchFragment(2);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        switchFragment(0);
+    }
+
+    private void switchFragment(int position) {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        for (int i = 0; i < fragmentList.size(); i++) {
+            Fragment fragment = fragmentList.get(i);
+            if (i == position) {
+                if (fragment.isAdded()) {
+                    ft.show(fragment);
+                } else {
+                    ft.add(R.id.fl, fragment);
+                }
+            } else {
+                if (fragment.isAdded()) {
+                    ft.hide(fragment);
+                }
+            }
+        }
+        ft.commit();
+    }
+
+    /**
+     * 按2次退出APP
+     */
+    @Override
+    public void onBackPressed() {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - lastTime < 2000) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(getApplicationContext(), "再按一次退出应用", Toast.LENGTH_SHORT).show();
+            lastTime = currentTime;
+        }
+    }
 }

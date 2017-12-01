@@ -2,10 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <!--状态栏指定了这个颜色，需要修改状态栏颜色可以修改本属性-->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--某些控件的颜色-->
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!--去掉每个Activity的Toolbar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
 </resources>
