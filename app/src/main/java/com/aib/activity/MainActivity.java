@@ -15,7 +15,7 @@ import com.xxx.design.R;
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-
+//大撒大撒大撒大大
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
