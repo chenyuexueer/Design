@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.xxx.design.R;
 
+/**
+ * 看到了吗
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
