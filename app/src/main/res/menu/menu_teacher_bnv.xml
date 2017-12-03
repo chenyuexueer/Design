@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btn_quiz"
+        android:icon="@drawable/ic_quiz"
+        android:title="问题" />
+
+    <item
+        android:id="@+id/btn_class"
+        android:icon="@drawable/ic_class"
+        android:title="班群" />
+
+    <item
+        android:id="@+id/btn_subject"
+        android:icon="@drawable/ic_subject"
+        android:title="题库" />
+
+</menu>

@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import com.xxx.design.R;
 
 /**
- * 题库页
+ * 作业
  */
 
-public class SubjectFragment extends BaseFragment {
+public class StudentSubjectFragment extends BaseFragment {
     @Override
     protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_subject, container, false);

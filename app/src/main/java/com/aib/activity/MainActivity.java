@@ -6,15 +6,14 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aib.fragment.ClassFragment;
-import com.aib.fragment.QuizFragment;
-import com.aib.fragment.SubjectFragment;
+import com.aib.fragment.StudentQuizFragment;
+import com.aib.fragment.StudentSubjectFragment;
+import com.aib.fragment.TeacherQuizFragment;
+import com.aib.fragment.TeacherSubjectFragment;
 import com.xxx.design.R;
 
 import java.util.ArrayList;
@@ -24,6 +23,7 @@ public class MainActivity extends BaseActivity {
     private long lastTime;
     private BottomNavigationView bnv;
     private List<Fragment> fragmentList = new ArrayList<>();
+    private int type = 0;   //0表示老师 1表示学生
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        fragmentList.add(new QuizFragment());
-        fragmentList.add(new ClassFragment());
-        fragmentList.add(new SubjectFragment());
+        if (type == 0) {
+            //老师
+            bnv.inflateMenu(R.menu.menu_teacher_bnv);
+            fragmentList.add(new TeacherQuizFragment());
+            fragmentList.add(new ClassFragment());
+            fragmentList.add(new TeacherSubjectFragment());
+        } else {
+            //学生
+            bnv.inflateMenu(R.menu.menu_student_bnv);
+            fragmentList.add(new StudentQuizFragment());
+            fragmentList.add(new ClassFragment());
+            fragmentList.add(new StudentSubjectFragment());
+        }
+
 
         bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
