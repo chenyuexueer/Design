@@ -13,7 +13,7 @@ import rx.Observer;
 //
 //import com.google.gson.Gson;
 //import com.untitled.runningfood.base.BaseActivity;
-//import com.untitled.runningfood.base.MyApplication;
+//import com.untitled.runningfood.base.DesignApplication;
 //import com.untitled.runningfood.bean.Entity;
 //import com.untitled.runningfood.bean.OuterEntity;
 //import com.untitled.runningfood.ui.activity.SignActivity;

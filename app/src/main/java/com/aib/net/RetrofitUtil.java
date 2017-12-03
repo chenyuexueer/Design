@@ -3,7 +3,7 @@ package com.aib.net;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.aib.base.MyApplication;
+import com.aib.base.DesignApplication;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -41,7 +41,7 @@ public class RetrofitUtil {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.baseURL)
-                    .client(getClient(MyApplication.getContext()))
+                    .client(getClient(DesignApplication.getContext()))
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
@@ -83,7 +83,7 @@ public class RetrofitUtil {
 
         public ReceivedCookiesInterceptor() {
             super();
-            this.context = MyApplication.getContext();
+            this.context = DesignApplication.getContext();
         }
 
         @Override
@@ -125,7 +125,7 @@ public class RetrofitUtil {
 
         public AddCookiesInterceptor() {
             super();
-            this.context = MyApplication.getContext();
+            this.context = DesignApplication.getContext();
 
         }
 
@@ -152,13 +152,13 @@ public class RetrofitUtil {
         /**
          *设置缓存
          */
-        File cacheFile = new File(MyApplication.getContext().getExternalCacheDir(), "aib");
+        File cacheFile = new File(DesignApplication.getContext().getExternalCacheDir(), "aib");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
         Interceptor cacheInterceptor = new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                if (!NetUtils.isConnected(MyApplication.getContext())) {
+                if (!NetUtils.isConnected(DesignApplication.getContext())) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
                             .build();
