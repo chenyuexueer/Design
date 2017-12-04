@@ -41,7 +41,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.tv_register:
-                openActivity(RegisterActivity.class);
+                openActivity(SchoolActivity.class);
                 break;
             case R.id.btn_login:
                 openActivity(MainActivity.class, true);

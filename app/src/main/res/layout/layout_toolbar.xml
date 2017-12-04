@@ -8,6 +8,7 @@
     app:contentInsetStart="0dp"
     app:contentInsetStartWithNavigation="0dp"
     app:navigationIcon="@drawable/ic_white_back"
+    app:titleTextAppearance="@style/Widget.AppCompat.AutoCompleteTextView"
     app:titleTextColor="@color/color_white">
 
 </android.support.v7.widget.Toolbar>

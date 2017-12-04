@@ -34,6 +34,5 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.zhy:autolayout:1.4.5'
-
-
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
 }

@@ -40,7 +40,7 @@ public class RetrofitUtil {
     public static Retrofit retrofit() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.baseURL)
+                    .baseUrl(Constants.url)
                     .client(getClient(DesignApplication.getContext()))
                     .addConverterFactory(GsonConverterFactory.create(new Gson()))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

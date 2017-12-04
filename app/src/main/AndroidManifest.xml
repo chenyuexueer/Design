@@ -9,7 +9,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="design_width"
             android:value="720" />
@@ -17,9 +16,7 @@
             android:name="design_height"
             android:value="1280" />
 
-        <activity android:name="com.aib.activity.MainActivity">
-
-        </activity>
+        <activity android:name="com.aib.activity.MainActivity"></activity>
         <activity android:name="com.aib.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +26,10 @@
         </activity>
         <activity
             android:name="com.aib.activity.RegisterActivity"
-            android:label="注册"></activity>
+            android:label="注册" />
+        <activity
+            android:name="com.aib.activity.SchoolActivity"
+            android:label="请选择学校"></activity>
     </application>
 
 </manifest>
